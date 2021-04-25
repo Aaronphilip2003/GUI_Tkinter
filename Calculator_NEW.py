@@ -27,7 +27,7 @@ def add():
     global f_num
     global math
     math = "addition"
-    f_num = int(first_number)
+    f_num = float(first_number)
     e.delete(0, END)
 
 
@@ -36,7 +36,7 @@ def sub():
     global f_num
     global math
     math = "subtraction"
-    f_num = int(first_number)
+    f_num = float(first_number)
     e.delete(0, END)
 
 
@@ -45,7 +45,7 @@ def mult():
     global f_num
     global math
     math = "multiplication"
-    f_num = int(first_number)
+    f_num = float(first_number)
     e.delete(0, END)
 
 
@@ -54,14 +54,14 @@ def div():
     global f_num
     global math
     math = "division"
-    f_num = int(first_number)
+    f_num = float(first_number)
     e.delete(0, END)
 
 
 def square():
     first_number = e.get()
     global f_num
-    f_num = int(first_number)
+    f_num = float(first_number)
     e.delete(0, END)
     e.insert(0, f_num * f_num)
 
@@ -69,14 +69,14 @@ def square():
 def cube():
     first_number = e.get()
     global f_num
-    f_num = int(first_number)
+    f_num = float(first_number)
     e.delete(0, END)
     e.insert(0, f_num * f_num*f_num)
 
 
 def square_root():
     first_number = e.get()
-    sqrtvar =(int)(first_number)
+    sqrtvar =(float)(first_number)
     global f_num
     f_num = int(first_number)
     e.delete(0, END)
@@ -85,10 +85,10 @@ def square_root():
 
 def cube_root():
     first_number = e.get()
-    cbrtvar = (int)(first_number)
+    cbrtvar = (float)(first_number)
     ans=np.cbrt(cbrtvar)
     global f_num
-    f_num = int(first_number)
+    f_num = float(first_number)
     e.delete(0, END)
     e.insert(0, ans)
 
@@ -103,30 +103,57 @@ def logarithm():
 
 def sin():
     first_number = e.get()
-    sinfn = (int)(first_number)
+    sinfn = (float)(first_number)
     ans=np.sin(np.deg2rad(sinfn))
     global f_num
-    f_num = int(first_number)
+    f_num = float(first_number)
     e.delete(0, END)
     e.insert(0, ans)
 
 def cos():
     first_number = e.get()
-    sinfn = (int)(first_number)
+    sinfn = (float)(first_number)
     ans=np.cos(np.deg2rad(sinfn))
     global f_num
-    f_num = int(first_number)
+    f_num = float(first_number)
     e.delete(0, END)
     e.insert(0, ans)
 
 def tan():
     first_number = e.get()
-    sinfn = (int)(first_number)
+    sinfn = (float)(first_number)
     ans=np.tan(np.deg2rad(sinfn))
     global f_num
-    f_num = int(first_number)
+    f_num = float(first_number)
     e.delete(0, END)
     e.insert(0, ans)
+
+def pi():
+    e.delete(0, END)
+    pi=3.14
+    e.insert(0,(float)(pi))
+
+def celtofar():
+    first_number = e.get()
+    celtemp=(float)(first_number)
+    ans=(float)((celtemp*1.8)+32)
+    e.delete(0, END)
+    e.insert(0, (float)(ans))
+
+def fartocel():
+    first_number = e.get()
+    fartemp=(float)(first_number)
+    ans=(float)((5*(fartemp-32))/9)
+    e.delete(0, END)
+    e.insert(0, (float)(ans))
+
+
+def euler_no():
+    e.delete(0, END)
+    eul = 2.718
+    e.insert(0, (float)(eul))
+
+
 
 
 
@@ -135,16 +162,16 @@ def button_Equal():
     e.delete(0,END)
 
     if math == "addition":
-        e.insert(0, f_num + int(second_number))
+        e.insert(0, f_num + float(second_number))
 
     elif math == "subtraction":
-        e.insert(0, f_num - int(second_number))
+        e.insert(0, f_num - float(second_number))
 
     elif math == "multiplication":
-        e.insert(0, f_num * int(second_number))
+        e.insert(0, f_num * float(second_number))
 
     elif math == "division":
-        e.insert(0, f_num / int(second_number))
+        e.insert(0, f_num / float(second_number))
 
 
 # Make Buttons
@@ -165,14 +192,18 @@ button_add = Button(root, text="+", padx=15, pady=15, borderwidth=5, command=add
 button_subtract = Button(root, text="-", padx=16, pady=15, borderwidth=5, command=sub)
 button_multiply = Button(root, text="x", padx=16, pady=15, borderwidth=5, command=mult)
 button_division = Button(root, text="÷", padx=14, pady=15, borderwidth=5, command=div)
-button_sqaure = Button(root, text="x^2", padx=12, pady=15, borderwidth=4, command=square)
-button_cube = Button(root, text="x^3", padx=12, pady=15, borderwidth=4, command=cube)
+button_sqaure = Button(root, text="x²", padx=16, pady=15, borderwidth=4, command=square)
+button_cube = Button(root, text="x³", padx=16, pady=15, borderwidth=4, command=cube)
 button_sqrt = Button(root, text="√", padx=17, pady=15, borderwidth=4, command=square_root)
-button_cbrt = Button(root, text="3√", padx=14, pady=15, borderwidth=4, command=cube_root)
+button_cbrt = Button(root, text="³√", padx=14, pady=15, borderwidth=4, command=cube_root)
 button_log = Button(root, text="log", padx=12, pady=15, borderwidth=4, command=logarithm)
 button_sin = Button(root, text="sin", padx=13, pady=15, borderwidth=4, command=sin)
 button_cos = Button(root, text="cos", padx=12, pady=15, borderwidth=4, command=cos)
 button_tan = Button(root, text="tan", padx=12, pady=15, borderwidth=4, command=tan)
+button_pi = Button(root, text="π", padx=15, pady=15, borderwidth=4, command=pi)
+button_celtofar = Button(root, text="C→F", padx=7, pady=15, borderwidth=4, command=celtofar)
+button_fartocel = Button(root, text="F→C", padx=7, pady=15, borderwidth=4, command=fartocel)
+button_euler_no = Button(root, text="e", padx=15, pady=15, borderwidth=4, command=euler_no)
 
 
 # Place Buttons
@@ -201,6 +232,10 @@ button_log.place(x=400, y=80)
 button_sin.place(x=400, y=140)
 button_cos.place(x=400, y=200)
 button_tan.place(x=400, y=260)
+button_pi.place(x=455, y=80)
+button_celtofar.place(x=455, y=140)
+button_fartocel.place(x=455, y=200)
+button_euler_no.place(x=455, y=260)
 
 root.mainloop()
 
